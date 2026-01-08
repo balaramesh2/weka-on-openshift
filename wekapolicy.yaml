@@ -1,0 +1,23 @@
+apiVersion: weka.weka.io/v1alpha1
+kind: WekaPolicy
+metadata:
+  name: weka-drivers
+  namespace: weka-operator-system
+spec:
+  image: quay.io/weka.io/weka-in-container:4.4.10.118
+  imagePullSecret:  "quay-io-robot-secret"
+  payload:
+    driverDistPayload: {}
+    interval: 1m
+  type: enable-local-drivers-distribution
+---
+apiVersion: weka.weka.io/v1alpha1
+kind: WekaPolicy
+metadata:
+  name: sign-drives
+  namespace: weka-operator-system # Replace with your namespace
+spec:
+  type: sign-drives
+  payload:
+    signDrivesPayload:
+      type: "all-not-root"
