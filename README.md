@@ -3,7 +3,9 @@ This README explains the steps to be taken to deploy WEKA on OpenShift 4.20 and 
 
 # PREREQUISITES
 
-- A working OpenShift cluster. I deployed a HCP cluster using `rosa`.
+- A working OpenShift cluster. A non-HCP cluster is required.
+
+  *UPDATE: Hosted Control Plane clusters do not work, on account of certain required CRDs not being exposed (such as `MachineConfig`)*
 
 # STEPS
 
