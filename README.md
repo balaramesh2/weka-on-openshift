@@ -1,6 +1,10 @@
 # WEKA On OpenShift
 This README explains the steps to be taken to deploy WEKA on OpenShift 4.20 and above.
 
+# PREREQUISITES
+
+- A working OpenShift cluster. I deployed a HCP cluster using `rosa`.
+
 # STEPS
 
 1. Deploy WEKA Operator v1.9.0 or newer:
