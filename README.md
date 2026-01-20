@@ -89,6 +89,18 @@ Each node should have the following annotations added to them after a successful
 - `weka.io/sign-drives-hash`
 - `weka.io/discovery.json`
 
+You can confirm this by executing the following command, which returns all nodes which have the `weka.io/weka-drives` annotation applied:
+```
+oc get nodes -o json | jq -r '.items[] | select(.metadata.annotations."weka.io/weka-drives") | .metadata.name'
+
+ip-10-0-12-29.us-east-2.compute.internal
+ip-10-0-30-6.us-east-2.compute.internal
+ip-10-0-39-13.us-east-2.compute.internal
+ip-10-0-49-167.us-east-2.compute.internal
+ip-10-0-52-68.us-east-2.compute.internal
+ip-10-0-56-107.us-east-2.compute.internal
+```
+
 You can also check the output of `oc get wekaPolicy --all-namespaces`
 
 3. Create a wekaCluster object:
