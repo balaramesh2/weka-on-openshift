@@ -48,7 +48,15 @@ Release: weka-operator
 Confirm the operator is up and running:
 ```
 oc get pods -n weka-operator-system
+
+NAME                                                READY   STATUS    RESTARTS   AGE
+weka-operator-controller-manager-5ddf4d4b8d-8b49z   2/2     Running   0          30s
+weka-operator-node-agent-f48t5                      1/1     Running   0          30s
+weka-operator-node-agent-fst52                      1/1     Running   0          30s
+weka-operator-node-agent-r2w7h                      1/1     Running   0          30s
+weka-operator-node-agent-v7qnd                      1/1     Running   0          30s
 ```
+
 You should see 1 controller pod + `n` node pods (where `n` equals number of OpenShift nodes)
 
 2. Create wekaPolicy objects:
