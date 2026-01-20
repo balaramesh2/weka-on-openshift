@@ -18,6 +18,33 @@ helm upgrade --create-namespace \
     --version v1.9.0 \
     --set csi.installationEnabled=true
 ```
+Upon deploying, you should observe the following output:
+```
+helm upgrade --create-namespace \
+    --install weka-operator oci://quay.io/weka.io/helm/weka-operator \
+    --namespace weka-operator-system \
+    --version v1.9.0 \
+    --set csi.installationEnabled=true
+Release "weka-operator" does not exist. Installing it now.
+Pulled: quay.io/weka.io/helm/weka-operator:v1.9.0
+Digest: sha256:3f63b16a7fba5ded2a2324a2a47ab8edcfe29fe66146f3bd8fd29240ed0dd6b4
+
+I0120 13:22:06.783978    4819 warnings.go:110] "Warning: would violate PodSecurity \"restricted:latest\": privileged (container \"node-agent\" must not set securityContext.privileged=true), allowPrivilegeEscalation != false (container \"node-agent\" must set securityContext.allowPrivilegeEscalation=false), unrestricted capabilities (container \"node-agent\" must set securityContext.capabilities.drop=[\"ALL\"]), restricted volume types (volumes \"weka-persistence\", \"dev\", \"host-run\" use restricted volume type \"hostPath\"), runAsNonRoot != true (pod must not set securityContext.runAsNonRoot=false), seccompProfile (pod or container \"node-agent\" must set securityContext.seccompProfile.type to \"RuntimeDefault\" or \"Localhost\")"
+I0120 13:22:06.828004    4819 warnings.go:110] "Warning: would violate PodSecurity \"restricted:latest\": runAsNonRoot != true (pod must not set securityContext.runAsNonRoot=false)"
+I0120 13:22:06.972782    4819 warnings.go:110] "Warning: unknown field \"allowedVolumeTypes\""
+I0120 13:22:06.974912    4819 warnings.go:110] "Warning: unknown field \"allowedVolumeTypes\""
+I0120 13:22:06.985514    4819 warnings.go:110] "Warning: unknown field \"allowedVolumeTypes\""
+I0120 13:22:06.985572    4819 warnings.go:110] "Warning: unknown field \"allowedVolumeTypes\""
+NAME: weka-operator
+LAST DEPLOYED: Tue Jan 20 13:22:02 2026
+NAMESPACE: weka-operator-system
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+NOTES:
+Chart: weka-operator
+Release: weka-operator
+```
 Confirm the operator is up and running:
 ```
 oc get pods -n weka-operator-system
