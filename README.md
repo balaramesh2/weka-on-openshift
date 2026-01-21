@@ -9,7 +9,21 @@ This README explains the steps to be taken to deploy WEKA on OpenShift 4.20 and 
 
 # STEPS
 
-1. Deploy WEKA Operator v1.9.0 or newer:
+0.1 Make Master nodes scheduleable. For workloads on Master nodes that require access to WEKA storage, this makes sense.
+
+```
+oc edit schedulers.config.openshift.io cluster
+Make mastersSchedulable: true
+```
+
+0.2 Update hugePages config on worker and master nodes.
+
+```
+oc create -f worker-hpc.yaml
+oc create -f master-hpc.yaml
+```
+
+2. Deploy WEKA Operator v1.9.0 or newer:
 
 ```
 helm upgrade --create-namespace \
