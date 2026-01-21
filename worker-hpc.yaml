@@ -1,0 +1,11 @@
+apiVersion: machineconfiguration.openshift.io/v1
+kind: MachineConfig
+metadata:
+  labels:
+    machineconfiguration.openshift.io/role: worker # Or master, if targeting master nodes
+  name: 50-kargs-1g-hugepages # A descriptive name for the MachineConfig
+spec:
+  kernelArguments:
+    - default_hugepagesz=2M
+    - hugepagesz=2M
+    - hugepages=15000 # Replace N with the desired number of 1GB hugepages
